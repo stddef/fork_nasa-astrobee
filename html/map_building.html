@@ -199,6 +199,10 @@ Map registration</h2>
 <p>Maps are built in an arbitrary coordinate system. They need to be transformed to a real-world coordinate system using manually defined control points.</p>
 <p>To accomplish this, first open a subset of the images used to build the map in Hugin, such as: </p><pre class="fragment">hugin &lt;image dir&gt;/*.jpg
 </pre><p>It will ask to enter a value for the FoV (field of view). That value is not important since we won't use it. One can input 10 degrees, for example.</p>
+<p>Alternatively you can use the generate hugin tool that reads the images from a map and imports them automatically (all images will be added). </p><pre class="fragment">rosrun sparse_mapping generate_hugin.py -map_name &lt;map_name_surf.map&gt; \
+  -input_hugin &lt;input_hugin.pto -- OPTIONAL ARGUMENT&gt; 
+  -output_hugin &lt;output_hugin.pto&gt;
+</pre><p>If you desire to update an existing hugin file for a new map keeping the already defined control points (when adding images to a map) you can specify the -input_hugin argument (if there are images in the input hugin that are not on the map, they will be automatically removed)</p>
 <p>Go to the "Expert" interface, then select matching control points across a pair of images (make sure the left and right image are not the same). Then repeat this process for several more pairs.</p>
 <p>Save the Hugin project to disk. Create a separate text file which contains the world coordinates of the control points picked earlier, with each line in the "x y z" format, and in the same order as the Hugin project file. That is to say, if a control point was picked in several image pairs in Hugin, it must show up also the same number of times in the text file. In the xyz text file all lines starting with the pound sign (#) are ignored, as well as all entries on any line beyond three numerical values.</p>
 <p>The xyz locations of the control points for the granite lab, the ISS and MGTF are mentioned below.</p>
